@@ -39,13 +39,18 @@ export default {
    */
   createPipe: async (name, sql) => {
     try {
-      const body = new URLSearchParams();
-      body.append('name', name);
-      body.append('sql', sql);
-
+      const data = {
+        name: name,
+        nodes: [
+          {
+            sql,
+            name: `node_00`
+          }
+        ]
+      };
       const options = {
         method: 'POST',
-        body: body
+        body: data
       };
 
       return fetch('/v0/pipes', options);

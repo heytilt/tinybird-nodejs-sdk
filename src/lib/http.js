@@ -7,16 +7,18 @@ const logger = getLogger('http-module');
 import pjson from '../../package.json';
 
 export const fetch = async (uri, options = {}) => {
-    const response = await f(`${getConfiguration(Settings.API_URL)}${uri}`, {
-        ...options,
-        agent: new https.Agent({ keepAlive: true }),
-        headers: {
-            'Authorization': `Bearer ${getConfiguration(Settings.API_TOKEN)}`,
-            'Accept': 'application/json',
-            'User-Agent': `tinybird-node-sdk@${pjson['version']}`,
-            ...options['headers']
-        }
-    });
+    const mergedOptions = {
+      ...options,
+      agent: new https.Agent({ keepAlive: true }),
+      headers: {
+          'Authorization': `Bearer ${getConfiguration(Settings.API_TOKEN)}`,
+          'Accept': 'application/json',
+          'User-Agent': `tinybird-node-sdk@${pjson['version']}`,
+          ...options['headers']
+      }
+    }
+    console.debug('mergedOptions', mergedOptions);
+    const response = await f(`${getConfiguration(Settings.API_URL)}${uri}`, mergedOptions);
 
     if (response.ok) {
         logger.debug(`[${response.status}] ${options['method'] || 'GET'} ${getConfiguration(Settings.API_URL)}${uri}`);
