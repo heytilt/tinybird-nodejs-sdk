@@ -2,7 +2,7 @@
     "name": "tinybird-sdk",
     "version": "0.5.0",
     "description": "Tinybird Node.js SDK",
-    "main": "dist/index.js",
+    "main": "src/index.js",
     "scripts": {
         "test": "mocha --timeout 60000 --require @babel/register",
         "test:coverage": "nyc --reporter=html mocha --timeout 60000 --require @babel/register",
