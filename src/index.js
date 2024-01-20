@@ -26,7 +26,7 @@ export default {
         }
 
         // Support custom tenants
-        if (validateAPIToken(options[Settings.API_URL])) {
+        if (options[Settings.API_URL]) {
             setConfiguration(Settings.API_URL, options[Settings.API_URL]);
         }
 
