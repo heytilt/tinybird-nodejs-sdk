@@ -2,14 +2,15 @@
     "name": "tinybird-sdk",
     "version": "0.5.0",
     "description": "Tinybird Node.js SDK",
-    "main": "src/index.js",
+    "main": "dist/index.js",
     "scripts": {
         "test": "mocha --timeout 60000 --require @babel/register",
         "test:coverage": "nyc --reporter=html mocha --timeout 60000 --require @babel/register",
         "test:watch": "mocha --timeout 60000 --require @babel/register -w",
         "lint": "eslint -c .eslintrc.yml src/**",
         "build": "babel src --out-dir dist && tsc",
-        "prepublishOnly": "npm run build"
+        "prepublishOnly": "npm run build",
+        "prepare": "npm run build"
     },
     "repository": {
         "type": "git",
