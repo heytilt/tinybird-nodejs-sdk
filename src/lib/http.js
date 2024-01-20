@@ -17,7 +17,7 @@ export const fetch = async (uri, options = {}) => {
           ...options['headers']
       }
     }
-    console.debug('mergedOptions', mergedOptions);
+    console.debug('mergedOptions', JSON.stringify(mergedOptions));
     const response = await f(`${getConfiguration(Settings.API_URL)}${uri}`, mergedOptions);
 
     if (response.ok) {
